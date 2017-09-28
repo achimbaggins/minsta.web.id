@@ -1,15 +1,23 @@
 var express = require('express');
+var app = express();
+const cors = require('cors')
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://achim:mQ8sOpOikNKXTjWt@cluster0-shard-00-00-j6d3u.mongodb.net:27017,cluster0-shard-00-01-j6d3u.mongodb.net:27017,cluster0-shard-00-02-j6d3u.mongodb.net:27017/minsta?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin', {
+  useMongoClient: true,
+  promiseLibrary: global.Promise
+});
+app.use(cors())
+
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var post = require('./routes/post');
 
-var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/posts', post);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
