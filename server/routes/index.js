@@ -20,6 +20,7 @@ router.get('/', function(req, res) {
     .catch(err => res.send(err))
   });
   
+
   router.post('/posts',
   images.multer.single('img'), 
   images.sendUploadToGCS,
@@ -60,6 +61,7 @@ router.put('/:id', function(req, res) {
     res.send('Data posts sudah terupdate')
 })
 .catch(err => res.send(err))
+
 })
 
 router.post('/login', setAccessToken, users.login)
