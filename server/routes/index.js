@@ -10,7 +10,7 @@ const setAccessToken = (req, res, next) => {
 }
 const images = require('../helpers/images')
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.send({ status: 'Minsta is live' });
   });
   
@@ -21,7 +21,8 @@ images.sendUploadToGCS,
     res.send({
     status: 200,
     message: 'Your file is successfully uploaded',
-    link: req.file.cloudStoragePublicUrl
+    link: req.file.cloudStoragePublicUrl,
+    data: req.body
     })
 })
 

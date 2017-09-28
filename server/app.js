@@ -8,11 +8,8 @@ mongoose.connect('mongodb://achim:mQ8sOpOikNKXTjWt@cluster0-shard-00-00-j6d3u.mo
   promiseLibrary: global.Promise
 });
 
-
-
 var index = require('./routes/index');
-var users = require('./routes/users');
-var cors = require('cors')
+var post = require('./routes/post');
 
 require('dotenv').config()
 
