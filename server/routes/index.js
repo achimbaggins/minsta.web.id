@@ -1,11 +1,18 @@
 'use strict'
-const express = require('express'),
-      router = express.Router(),
-      images = require('../helpers/images')
+var express = require('express');
+var router = express.Router();
+const users = require('../controller/login')
+const FB = require('fb')
+const fb = new FB.Facebook({version: 'v2.10'});
+const setAccessToken = (req, res, next) => {
+  FB.setAccessToken(req.headers.fbaccesstoken);
+  next()
+}
+const images = require('../helpers/images')
 
-router.get('/', (req, res, next) => {
-    res.send({ message: 'Welcome Buddy!' })
-  })
+router.get('/', function(req, res, next) {
+    res.send({ status: 'Minsta is live' });
+  });
   
 router.post('/posts',
 images.multer.single('image'), 
@@ -18,5 +25,12 @@ images.sendUploadToGCS,
     })
 })
 
+router.post('/login', setAccessToken, users.login)
+
 module.exports = router
+
+
+
+
+
 
