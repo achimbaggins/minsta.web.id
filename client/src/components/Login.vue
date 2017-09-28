@@ -25,25 +25,26 @@ export default {
   },
   methods: {
     onSignInSuccess (response) {
-      window.FB.api('/me', {fields: ['id', 'name', 'email', 'pictures']}, dude => {
-        console.log(response)
-        console.log(`Good to see you, ${dude.name}.`)
-        localStorage.setItem('fbaccesstoken', response.authResponse.accessToken)
+      // window.FB.api('/me', {fields: ['id', 'name', 'email', 'pictures']}, dude => {
+        // console.log(response)
+        // console.log(`Good to see you, ${dude.name}.`)
+      localStorage.setItem('fbaccesstoken', response.authResponse.accessToken)
+      console.log(response)
 
-        axios({
-          method: 'post',
-          url: `http://localhost:3000/login`,
-          headers: {
-            fbaccesstoken: localStorage.getItem('fbaccesstoken')
-          }
-        })
-        .then(loginResponse => {
-          console.log(loginResponse)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      axios({
+        method: 'post',
+        url: `http://localhost:3000/login`,
+        headers: {
+          fbaccesstoken: localStorage.getItem('fbaccesstoken')
+        }
       })
+      .then(loginResponse => {
+        console.log(loginResponse)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      // })
     },
     onSignInError (error) {
       console.log('OH NOES', error)

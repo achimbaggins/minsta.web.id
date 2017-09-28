@@ -2,19 +2,19 @@
   <div>
   <Navbar></Navbar>
   <Gallery></Gallery>
-  <Footer></Footer>
+  <Footers></Footers>
   </div>
 </template>
 
 <script>
   import Navbar from '@/components/Navbar'
   import Gallery from '@/components/Gallery'
-  import Footer from '@/components/Footer'
+  import Footers from '@/components/Footers'
   export default {
     components: {
       Navbar,
       Gallery,
-      Footer
+      Footers
     }
   }
 </script>

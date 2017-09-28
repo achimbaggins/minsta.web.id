@@ -5,9 +5,9 @@ const FB = require('fb')
 const login = (req, res) => {
   FB.api('/me', {fields: ['id','name','email','picture']}, (response) => {
     // res.send(response)
-    console.log(response);
+    console.log('ini response fb', response);
 
-    db.findOne({fb_id: response.id})
+    db.find({fb_id: response.id})
     .then(result => {
       if(result.length === 0){
         db.create({

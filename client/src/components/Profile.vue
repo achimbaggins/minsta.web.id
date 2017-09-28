@@ -2,24 +2,24 @@
 <div>
    <Navbar></Navbar>
    <div class="row">
-    <Form></Form>
+    <Forms></Forms>
     <UserGallery></UserGallery>
    </div>
-   <Footer></Footer>
+   <Footers></Footers>
 </div>
 </template>
 
 <script>
   import Navbar from '@/components/Navbar'
   import UserGallery from '@/components/UserGallery'
-  import Form from '@/components/Form'
-  import Footer from '@/components/Footer'
+  import Forms from '@/components/Forms'
+  import Footers from '@/components/Footers'
   export default {
     components: {
       Navbar,
       UserGallery,
-      Form,
-      Footer
+      Forms,
+      Footers
     }
   }
 </script>
