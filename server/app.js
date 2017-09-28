@@ -3,11 +3,15 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var cors = require('cors')
+
+require('dotenv').config()
 
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(cors())
 app.use('/', index);
 app.use('/users', users);
 
