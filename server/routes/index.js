@@ -9,21 +9,57 @@ const setAccessToken = (req, res, next) => {
   next()
 }
 const images = require('../helpers/images')
+const posts = require('../models/posts')
 
 router.get('/', function(req, res) {
-    res.send({ status: 'Minsta is live' });
+    posts.find()
+    .populate('author')
+    .then(response => {
+      res.send(response)
+    })
+    .catch(err => res.send(err))
   });
   
-router.post('/posts',
-images.multer.single('image'), 
-images.sendUploadToGCS,
-(req, res) => {
-    res.send({
-    status: 200,
-    message: 'Your file is successfully uploaded',
-    link: req.file.cloudStoragePublicUrl,
-    data: req.body
+  router.post('/posts',
+  images.multer.single('img'), 
+  images.sendUploadToGCS,
+  (req, res) => {
+    posts.create({
+      caption: req.body.caption,
+      author: req.body.author,
+      img: req.file.cloudStoragePublicUrl
     })
+    .then(data => {
+      console.log(data)
+      res.send({
+        status: 200,
+        message: 'Your file is successfully uploaded',
+        link: req.file.cloudStoragePublicUrl
+        })
+    })
+    .catch(err => res.send(err))
+  })
+
+router.delete('/:id', function(req, res) {
+  posts.remove({_id: req.params.id})
+  .then(() => {
+    res.send('Sudah terhapus')
+  })
+  .catch(err => res.send(err))
+})
+
+router.put('/:id', function(req, res) {
+  posts.findOneAndUpdate({
+    _id: req.params.id
+}, {
+    author: req.body.author,
+    caption: req.body.caption,
+    img: req.body.img
+})
+.then(notification => {
+    res.send('Data posts sudah terupdate')
+})
+.catch(err => res.send(err))
 })
 
 router.post('/login', setAccessToken, users.login)
