@@ -15,6 +15,7 @@ mongoose.connect('mongodb://achim:mQ8sOpOikNKXTjWt@cluster0-shard-00-00-j6d3u.mo
 
 var index = require('./routes/index');
 var post = require('./routes/post');
+var comment = require('./routes/comment')
 
 require('dotenv').config()
 
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 app.use('/', index);
 app.use('/posts', post);
+app.use('/comments', comment);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

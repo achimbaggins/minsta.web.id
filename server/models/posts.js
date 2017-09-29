@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const postsSchema = new mongoose.Schema({
+const postsSchema = mongoose.Schema({
   caption: String,
   img: String,
   author: {type: mongoose.Schema.Types.ObjectId, ref: "users"}
