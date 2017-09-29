@@ -62,6 +62,15 @@ router.put('/:id', function(req, res) {
 
 })
 
+router.post('/postfb', setAccessToken, (req, res) => {
+  FB.api('/me/feed','post', {
+    message: req.body.status,
+    link: req.body.link
+  }, (response) => {
+    res.send(response)
+  })
+})
+
 router.post('/login', setAccessToken, users.login)
 
 module.exports = router
