@@ -7,7 +7,7 @@ import FBSignInButton from 'vue-facebook-signin-button'
 import axios from 'axios'
 
 Vue.prototype.$http = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: 'http://api.minsta.web.id'
 })
 
 Vue.use(FBSignInButton)

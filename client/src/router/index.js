@@ -4,7 +4,7 @@ import Home from '@/components/Home'
 import Profile from '@/components/Profile'
 import Login from '@/components/Login'
 import AllPost from '@/components/AllPost'
-// import DetailPost from '@/components/DetailPost'
+import DetailPost from '@/components/DetailPost'
 
 Vue.use(Router)
 
@@ -28,12 +28,11 @@ export default new Router({
         {
           path: '',
           component: AllPost
+        }, {
+          path: ':postid',
+          component: DetailPost,
+          props: true
         }
-        // ,
-        // {
-        //   path: ':id',
-        //   component: DetailPost
-        // }
       ]
     }
   ]
