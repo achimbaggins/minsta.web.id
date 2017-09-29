@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Profile from '@/components/Profile'
 import Login from '@/components/Login'
+import AllPost from '@/components/AllPost'
+import DetailPost from '@/components/DetailPost'
 
 Vue.use(Router)
 
@@ -11,8 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      name: 'Login',
+      component: Login
     },
     {
       path: '/profile',
@@ -20,9 +22,19 @@ export default new Router({
       component: Profile
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login
+      path: '/home',
+      name: 'Home',
+      component: Home,
+      children: [
+        {
+          path: '',
+          component: AllPost
+        },
+        {
+          path: ':id',
+          component: DetailPost
+        }
+      ]
     }
   ]
 })
