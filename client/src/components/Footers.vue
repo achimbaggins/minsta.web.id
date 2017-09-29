@@ -3,7 +3,7 @@
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5></h5>
+             <a href="#"><img src="../assets/minsta_logo.png" alt="logo" style="width:130px;"></a>
           </div>
         </div>
       </div>

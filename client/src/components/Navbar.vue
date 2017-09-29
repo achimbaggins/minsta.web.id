@@ -2,7 +2,7 @@
   <div>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">Minsta</a>
+        <a href="#" class="brand-logo center"><img src="../assets/minsta_logo.png" alt="logo" style="width:220px;margin-top:-30px !important;"></a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><a><router-link to="/home">Home</router-link></a></li>
           <li><a><router-link to="/profile">My Gallery</router-link></a></li>
