@@ -5,9 +5,9 @@
           <div class="card">
             <router-link :to="'/home/' + data._id">
               <div class="card-image">
-              <img :src="data.img" style="width:300px;height:300px;">
+              <img :src="data.img" style="width:250px;height:250px;">
               <span class="card-title"></span>
-              <a @click="deletePost(data._id)" class="btn-floating halfway-fab waves-effect waves-light red" v-if="myid === data.author._id"><i class="material-icons">close</i></a>
+              
             </div>
             <div class="card-content">
               <p><b>{{ data.author.name }}</b></p>
@@ -15,6 +15,7 @@
               <p>Uploaded: {{ data.createdAt }}</p>
             </div>  
             </router-link>
+            <a @click="deletePost(data._id)" class="btn-floating halfway-fab waves-effect waves-light red" v-if="myid === data.author._id"><i class="material-icons">close</i></a>
           </div>
       </div>
     </div>
