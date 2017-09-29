@@ -15,6 +15,16 @@
       Navbar,
       Gallery,
       Footers
+    },
+    methods: {
+      checkLogin () {
+        if (!localStorage.fbaccesstoken) {
+          this.$router.push('/')
+        }
+      }
+    },
+    created () {
+      this.checkLogin()
     }
   }
 </script>

@@ -25,6 +25,7 @@ export default {
   },
   methods: {
     onSignInSuccess (response) {
+      var self = this
       // window.FB.api('/me', {fields: ['id', 'name', 'email', 'pictures']}, dude => {
         // console.log(response)
         // console.log(`Good to see you, ${dude.name}.`)
@@ -39,10 +40,15 @@ export default {
         }
       })
       .then(loginResponse => {
-        console.log(loginResponse)
+        localStorage.setItem('token', loginResponse.data.token)
+        localStorage.setItem('name', loginResponse.data.name)
+        localStorage.setItem('id', loginResponse.data.id)
+        self.$router.push('/home')
+        console.log('==========datanya', loginResponse.data)
       })
       .catch(err => {
         console.log(err)
+        self.$router.push('/')
       })
       // })
     },

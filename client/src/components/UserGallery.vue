@@ -5,7 +5,6 @@
           <div class="card">
             <div class="card-image">
               <img src="http://tusimagenes.net/wp-content/uploads/2017/05/httptusimagenes-3-9.jpg">
-              <span class="card-title">Card Title</span>
               <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
             </div>
             <div class="card-content">

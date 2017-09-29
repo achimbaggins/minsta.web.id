@@ -3,7 +3,7 @@
    <Navbar></Navbar>
    <div class="row">
     <Forms></Forms>
-    <UserGallery></UserGallery>
+    <user-gallery></user-gallery>
    </div>
    <Footers></Footers>
 </div>
@@ -20,6 +20,16 @@
       UserGallery,
       Forms,
       Footers
+    },
+    methods: {
+      checkLogin () {
+        if (!localStorage.fbaccesstoken) {
+          this.$router.push('/')
+        }
+      }
+    },
+    created () {
+      this.checkLogin()
     }
   }
 </script>
