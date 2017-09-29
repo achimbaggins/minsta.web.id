@@ -1,0 +1,20 @@
+nav {
+  background: linear-gradient(-45deg,#23A6D5, #23D5AB) !important;
+  border-bottom: 1px solid;
+  margin-bottom: 50px !important;
+  height: 70px;
+  padding-top: 5px;
+}
+
+.btn {
+  background: linear-gradient(-45deg,#23A6D5, #23D5AB) !important;
+}
+
+footer.page-footer {
+  background: linear-gradient(-45deg,#23A6D5, #23D5AB) !important;
+}
+
+
+
+
+
