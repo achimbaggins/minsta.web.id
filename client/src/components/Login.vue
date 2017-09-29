@@ -3,12 +3,15 @@
   <!-- <body style="background: linear-gradient(-45deg,#23A6D5, #23D5AB) !important;height:1024px;"> -->
     <!-- <button class="btn" style="margin-top: 25%;margin-left:45%;">Login</button> -->
   <!-- </body> -->
-  <fb-signin-button
+
+  <div style="background: linear-gradient(-45deg,#23A6D5, #23D5AB) !important;height:1000px;width:100%;"  >
+  <center><a href="#" class="brand-logo center"><img src="../assets/minsta_logo.png" alt="logo" style="width:400px;margin-top:230px !important;"></a></center><center><fb-signin-button
     :params="fbSignInParams"
     @success="onSignInSuccess"
     @error="onSignInError">
     Sign in with Facebook
-  </fb-signin-button>
+  </fb-signin-button></center>
+  </div>
   </div>
 </template>
 
