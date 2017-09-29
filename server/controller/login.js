@@ -41,7 +41,7 @@ const login = (req, res) => {
         var token = jwt.sign(siapBungkus, 'apaaa')
         console.log('tokennya', token);
         console.log('namanya', result);
-        res.send({token: token, name: result.name, id: result._id})
+        res.send({token: token, name: result[0].name, id: result[0]._id})
       }
     })
   })
