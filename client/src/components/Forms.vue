@@ -46,11 +46,18 @@
       },
       upload () {
         var data = new FormData()
-        data.append('file', this.newPost.img)
+        data.append('img', this.newPost.img)
         data.append('caption', this.newPost.caption)
-        data.append('authorId', this.newPost.author)
-        this.$http.post('/posts', data)
+        data.append('author', this.newPost.author)
+        console.log('data image', data)
+        this.$http.post('/posts', data, {
+          headers: {
+            token: localStorage.getItem('token')
+          }
+        })
         .then(result => {
+          this.$emit('dataBaru', result.data)
+          this.$router.push('/home')
           alert('sukses upload!!!')
         })
       }

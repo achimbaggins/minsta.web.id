@@ -54,7 +54,15 @@ export default {
     },
     onSignInError (error) {
       console.log('OH NOES', error)
+    },
+    checkLogin () {
+      if (localStorage.fbaccesstoken) {
+        this.$router.push('/home')
+      }
     }
+  },
+  created () {
+    this.checkLogin()
   }
 }
 </script>

@@ -3,7 +3,7 @@
    <Navbar></Navbar>
    <div class="row">
     <Forms></Forms>
-    <user-gallery></user-gallery>
+    <user-gallery :userposts="userposts" @dataBaru="tambahinDong"></user-gallery>
    </div>
    <Footers></Footers>
 </div>
@@ -15,6 +15,12 @@
   import Forms from '@/components/Forms'
   import Footers from '@/components/Footers'
   export default {
+    data () {
+      return {
+        userposts: [],
+        myid: localStorage.getItem('id')
+      }
+    },
     components: {
       Navbar,
       UserGallery,
@@ -26,10 +32,25 @@
         if (!localStorage.fbaccesstoken) {
           this.$router.push('/')
         }
+      },
+      getuserpost () {
+        this.$http.get(`/userphoto/${this.myid}`, {
+          headers: {
+            token: localStorage.getItem('token')
+          }
+        })
+        .then(ok => {
+          this.userposts = ok.data.reverse()
+        })
+      },
+      tambahinDong (data) {
+        console.log('datanya', data)
+        this.userposts.unshift(data)
       }
     },
-    created () {
+    mounted () {
       this.checkLogin()
+      this.getuserpost()
     }
   }
 </script>

@@ -45,6 +45,7 @@ router.get('/', autentifikasi, function(req, res) {
   images.multer.single('img'), 
   images.sendUploadToGCS,
   (req, res) => {
+    console.log('data body', req.body)
     posts.create({
       caption: req.body.caption,
       author: req.body.author,

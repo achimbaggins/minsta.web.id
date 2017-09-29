@@ -1,14 +1,16 @@
 <template>
   <div>
     <div class="container">
-      <div class=" col s4">
+      <div class=" col s4" v-for="(data, index) in userposts" :key="index">
           <div class="card">
             <div class="card-image">
-              <img src="http://tusimagenes.net/wp-content/uploads/2017/05/httptusimagenes-3-9.jpg">
+              <img :src="data.img">
               <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
             </div>
             <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              <p><b>{{ data.author.name }}</b></p>
+              <p>{{ data.caption }}</p>
+              <p>Uploaded: {{ data.createdAt }}</p>
             </div>
           </div>
       </div>
@@ -18,5 +20,6 @@
 
 <script>
   export default {
+    props: ['userposts']
   }
 </script>
