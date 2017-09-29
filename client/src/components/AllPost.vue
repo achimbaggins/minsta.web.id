@@ -6,7 +6,7 @@
             <div class="card-image">
               <img :src="data.img">
               <span class="card-title"></span>
-              <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+              <a class="btn-floating halfway-fab waves-effect waves-light red" v-if="myid === data.author._id"><i class="material-icons">close</i></a>
             </div>
             <div class="card-content">
               <p><b>{{ data.author.name }}</b></p>
@@ -23,14 +23,19 @@
   export default {
     data () {
       return {
-        allpost: []
+        allpost: [],
+        myid: localStorage.getItem('id')
       }
     },
     methods: {
       getAllPost () {
-        this.$http.get('/')
+        this.$http.get('/', {
+          headers: {
+            token: localStorage.getItem('token')
+          }
+        })
         .then(result => {
-          this.allpost = result.data
+          this.allpost = result.data.reverse()
         })
       }
     },
