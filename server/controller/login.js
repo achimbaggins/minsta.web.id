@@ -17,7 +17,7 @@ const login = (req, res) => {
           name: response.name
         })
         .then(rows =>{
-          console.log(rows)
+          console.log('ini rows',rows)
           var siapBungkus = {
             id: rows._id,
             fb_id: rows.id,
@@ -26,7 +26,7 @@ const login = (req, res) => {
           }
           var token = jwt.sign(siapBungkus, 'apaaa')
           console.log('tokennya', token);
-          res.send({token: token, name: rows.name, id: result._id})
+          res.send({token: token, name: rows.name, id: rows._id})
         })
         .catch(err =>{
           res.send(err)
@@ -41,7 +41,7 @@ const login = (req, res) => {
         var token = jwt.sign(siapBungkus, 'apaaa')
         console.log('tokennya', token);
         console.log('namanya', result);
-        res.send({token: token, name: result.name, id: result._id})
+        res.send({token: token, name: result[0].name, id: result[0]._id})
       }
     })
   })

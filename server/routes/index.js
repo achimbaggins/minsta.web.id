@@ -31,14 +31,14 @@ router.get('/', function(req, res) {
       img: req.file.cloudStoragePublicUrl
     })
     .then(data => {
-      console.log(data)
+      console.log('ini data',data)
       res.send({
         status: 200,
         message: 'Your file is successfully uploaded',
         link: req.file.cloudStoragePublicUrl
         })
     })
-    .catch(err => res.send(err))
+    .catch(err => res.send('ini error',err))
   })
 
 router.delete('/:id', function(req, res) {
