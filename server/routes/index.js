@@ -15,14 +15,24 @@ router.get('/', function(req, res, next) {
   });
   
 router.post('/posts',
-images.multer.single('image'), 
+images.multer.single('img'), 
 images.sendUploadToGCS,
 (req, res) => {
+  posts.create({
+    caption: req.body.caption,
+    author: req.body.author,
+    img: req.file.cloudStoragePublicUrl
+  })
+  .then(data => {
     res.send({
     status: 200,
     message: 'Your file is successfully uploaded',
     link: req.file.cloudStoragePublicUrl
     })
+  })
+  .catch(err => {
+    res.send(err)
+  })
 })
 
 router.post('/login', setAccessToken, users.login)

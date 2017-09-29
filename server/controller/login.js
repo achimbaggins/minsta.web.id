@@ -17,6 +17,7 @@ const login = (req, res) => {
           name: response.name
         })
         .then(rows =>{
+          console.log(rows)
           var siapBungkus = {
             id: rows._id,
             fb_id: rows.id,

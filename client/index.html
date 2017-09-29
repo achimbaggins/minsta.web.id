@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
-    <title>client</title>
+     <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="src/assets/css/style.css">
+  <style>
+  nav {
+  background: linear-gradient(-45deg,#23A6D5, #23D5AB) !important;
+  border-bottom: 1px solid;
+  margin-bottom: 50px !important;
+  height: 70px;
+  padding-top: 5px;
+}
+
+.btn {
+  background: linear-gradient(-45deg,#23A6D5, #23D5AB) !important;
+}
+
+footer.page-footer {
+  background: linear-gradient(-45deg,#23A6D5, #23D5AB) !important;
+}
+
+  </style>
+  <title>Document</title>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1127274980738461',
+          cookie     : true,  // enable cookies to allow the server to access the session
+          xfbml      : true,  // parse social plugins on this page
+          version    : 'v2.10' // use graph api version 2.10
+        });
+      };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
   </body>
 </html>
