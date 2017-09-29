@@ -9,9 +9,11 @@ const setAccessToken = (req, res, next) => {
   next()
 }
 const images = require('../helpers/images')
+const autentifikasi = require('../helpers/auth')
+const autorisasi = require('../helpers/autor')
 const posts = require('../models/posts')
 
-router.get('/', function(req, res) {
+router.get('/', autentifikasi, function(req, res) {
     posts.find()
     .populate('author')
     .then(response => {
@@ -19,9 +21,27 @@ router.get('/', function(req, res) {
     })
     .catch(err => res.send(err))
   });
-  
+
+  router.get('/userphoto/:id', autentifikasi, function(req, res) {
+    posts.find({author: req.params.id})
+    .populate('author')
+    .then(response => {
+      res.send(response)
+    })
+    .catch(err => res.send(err))
+  });
+
+  router.get('/detail/:id', autentifikasi, function(req, res) {
+    posts.find({_id: req.params.id})
+    .populate('author')
+    .then(response => {
+      res.send(response)
+    })
+    .catch(err => res.send(err))
+  });
 
   router.post('/posts',
+  autentifikasi,
   images.multer.single('img'), 
   images.sendUploadToGCS,
   (req, res) => {
@@ -41,7 +61,7 @@ router.get('/', function(req, res) {
     .catch(err => res.send('ini error',err))
   })
 
-router.delete('/:id', function(req, res) {
+router.delete('/:id', autentifikasi, autorisasi, function(req, res) {
   posts.remove({_id: req.params.id})
   .then(() => {
     res.send('Sudah terhapus')
@@ -49,7 +69,7 @@ router.delete('/:id', function(req, res) {
   .catch(err => res.send(err))
 })
 
-router.put('/:id', function(req, res) {
+router.put('/:id', autentifikasi, autorisasi, function(req, res) {
   posts.update({
     _id: req.params.id
 }, {
@@ -62,14 +82,6 @@ router.put('/:id', function(req, res) {
 
 })
 
-router.post('/postfb', setAccessToken, (req, res) => {
-  FB.api('/me/feed','post', {
-    message: req.body.status,
-    link: req.body.link
-  }, (response) => {
-    res.send(response)
-  })
-})
 
 router.post('/login', setAccessToken, users.login)
 
