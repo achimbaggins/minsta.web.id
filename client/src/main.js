@@ -5,7 +5,9 @@ import App from './App'
 import router from './router'
 import FBSignInButton from 'vue-facebook-signin-button'
 import axios from 'axios'
+import SocialSharing from 'vue-social-sharing'
 
+Vue.use(SocialSharing)
 Vue.prototype.$http = axios.create({
   baseURL: 'http://api.minsta.web.id'
 })

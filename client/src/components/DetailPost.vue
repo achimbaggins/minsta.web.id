@@ -26,7 +26,7 @@
           <div class="card">
             <div class="card-content">
               <input type="text" v-model="komentar.comment">
-              <button type="button" @click="kirimkomentar"> Kirim Jing </button>
+              <button type="button" @click="kirimkomentar"> Comment Dong </button>
             </div>
           </div>
       </div>

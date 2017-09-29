@@ -45,35 +45,6 @@
           alert('gagal menghapus')
         })
       }
-    //   getAllPost () {
-    //     this.$http.get('/', {
-    //       headers: {
-    //         token: localStorage.getItem('token')
-    //       }
-    //     })
-    //     .then(result => {
-    //       this.allpost = result.data.reverse()
-    //     })
-    //   }
-    // },
-    // created () {
-    //   this.getAllPost()
-
-    // }
-    // methods: {
-    //   getAllPost () {
-    //     this.$http.get('/', {
-    //       headers: {
-    //         token: localStorage.getItem('token')
-    //       }
-    //     })
-    //     .then(result => {
-    //       this.allpost = result.data.reverse()
-    //     })
-    //   }
-    // },
-    // created () {
-    //   this.getAllPost()
-    // }
+    }
   }
 </script>

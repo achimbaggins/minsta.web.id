@@ -11,6 +11,11 @@
               <p><b>{{ data.author.name }}</b></p>
               <p>{{ data.caption }}</p>
               <p>Uploaded: {{ data.createdAt }}</p>
+              <social-sharing :url="data.img" inline-template>
+    <network network="facebook">
+      <button type="button" name="button"><i class="fa fa-facebook"></i>Share Dong Say!</button>
+    </network>
+  </social-sharing>
             </div>
           </div>
       </div>
