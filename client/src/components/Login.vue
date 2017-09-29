@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       fbSignInParams: {
-        scope: 'email,public_profile',
+        scope: 'email,public_profile,publish_actions,manage_pages,publish_pages',
         return_scopes: true
       }
     }

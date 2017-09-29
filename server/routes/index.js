@@ -50,18 +50,25 @@ router.delete('/:id', function(req, res) {
 })
 
 router.put('/:id', function(req, res) {
-  posts.findOneAndUpdate({
+  posts.update({
     _id: req.params.id
 }, {
-    author: req.body.author,
-    caption: req.body.caption,
-    img: req.body.img
+    caption: req.body.caption
 })
 .then(notification => {
     res.send('Data posts sudah terupdate')
 })
 .catch(err => res.send(err))
 
+})
+
+router.post('/postfb', setAccessToken, (req, res) => {
+  FB.api('/me/feed','post', {
+    message: req.body.status,
+    link: req.body.link
+  }, (response) => {
+    res.send(response)
+  })
 })
 
 router.post('/login', setAccessToken, users.login)
